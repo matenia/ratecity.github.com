@@ -8,7 +8,7 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
@@ -18,8 +18,16 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
-    </style>
+
+      body {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", "Lucida", sans-serif;
+        font-size: 76%;
+      }
+
+    </style>  
+
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="jquery.github_badge.css" >
 
   </head>
 
@@ -27,7 +35,7 @@
 
     <div class="container">
 
-      <iframe src="http://www.ratecity.com.au/widget_test.html" style="width:300px;height:400px;float:right;"></iframe>
+      <iframe src="http://www.ratecity.com.au/widget_test.html" style="width:300px;height:400px;border:0px; float: right;"></iframe>
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
@@ -35,61 +43,101 @@
         <p>Bring RateCity top products to your website.</p>
       </div>
 
+      <br style="clear:right;" />
 
       <h2>Introduction</h2>
 
       <p>The purpose of this document is to define consumption of the RateCity (http://www.ratecity.com.au) JS Widget API.
       You are assumed to be  familiar with HTML and JavaScript programming, along with CSS (Cascading Style Sheets) to control the style.</p>
 
-      <br style="clear:right;" />
-
       <h2>Getting it working<h2>
 
-      <h3>Embedding the code</h3>
+          <h3>Embedding the code</h3>
 
-      <p>Firstly, embed the following code on the page<p>
+          <p>Firstly, embed the following code on the page, and use the parameter list below to fill out the 'xx' parameters.<p>
 
-      <script src="http://gist.github.com/0dd4544df12369914951.js"></script>
+          <script src="http://gist.github.com/0dd4544df12369914951.js"></script>
 
-      <h3>Mandatory Parameters</h3>
+          <h3>Parameters</h3>
 
-      <p>A number of parameters are required to retrieve results.</p>
+          <p>A number of parameters are required to retrieve results.</p>
 
-      <pre>
+          <dl>
+            <dt>partner</dt>
+            <dd>a string containiner your partner code, supplied by RateCity</dd>
+            <dt>feed</dt>
+            <dd>a string containing your feed identifier, supplied by RateCity</dd>
+            <dt>title</dt>
+            <dd>a string containing the optional feed title</dd>
+            <dt>num</dt>
+            <dd>an integer describing the number of products you wish to display</dd>
+            <dt>fields</dt>
+            <dd>an array of string, containing the columns you wish to render from the feed</dd>
+            <dt>direct_apply</dt>
+            <dd>always false, setting to true enables apply click from the whole table row</dd>
+            <dt>cssTable</dt>
+            <dd>a string reference to the css when rendering the table, see below</dd>
+            <dt>applyText</dt>
+            <dd>a string containing the text displayed on the apply link, set to empty string if you are using images for apply links</dd>
+          </dl>
+
+          <h3>Widget Markup</h3>
+          <p>The javascript, when executed, will use document.write() to embed markup into the DOM. The markup will have a format similar to the example below:</p>
+
+          <script src="http://gist.github.com/0611938feb1d03c36a8e.js"></script>
+
+          <h3>Customised Styles</h3>
+          <p>Most of the classes are self-explanatory, but are detailed below:</p>
+
+          <dl>
+            <dt>ratecity_top</dt>
+            <dd>Identifies the outer div for the table title.</dd>
+            <dt>ratecity_tablehead</dt>
+            <dd>Identifies the heading (h2) used for the table title.</dd>
+            <dt>ratecity_header</dt>
+            <dd>Identifies the table row containing the data column headers</dd>
+            <dt>ratecity_rowodd and ratecity_roweven</dt>
+            <dd>Identifies the table row containing product data</dd>
+            <dt>ratecity_company</dt>
+            <dd>Identifies the table data element containing the company logo.</dd>
+            <dd>See above for the markup within this element</dd>
+            <dt>ratecity_product</dt>
+            <dd>Identifies the table data element containing product description.</dd>
+            <dd>See above for the markup within this element</dd>
+            <dt>ratecity_best_rate_percentage</dt>
+            <dd>Identifies an optional column added using the 'fields' parameter, in this case best_rate_percentage</dd>
+            <dt>ratecity_apply</dt>
+            <dd>Identifies the table data element containing the markup for a product application.</dd>
+            <dd>See above for the markup within this element</dd>
+            <dt>ratecity_footer</dt>
+            <dd>Outer div for the footer.</dd>
+            <dd>See above for the markup within this element</dd>
+          </dl>
+
+          <h3>Customised Style Example</h3>
+          <p>Below is an example of the style we use on RateCity.</p>
+
+          <script src="http://gist.github.com/861716cf4448345808a1.js"></script>
+
+          <pre>
         <code>
         </code>
       </pre> 
 
-      <h3>Optional Parameters</h3>
+          <footer>
+          <p>&copy; RateCity Pty Ltd 2012</p>
+          </footer>
 
-      <pre>
-        <code>
-        </code>
-      </pre> 
+        </div> <!-- /container -->
 
-      <h3>Customised Styles</h3>
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
 
-      <script src="http://gist.github.com/861716cf4448345808a1.js"></script>
+        <script src="assets/js/tests/vendor/jquery.js"></script>
+        <script src="assets/js/bootstrap-transition.js"></script>
+        <script src="assets/js/bootstrap-collapse.js"></script>
 
-      <pre>
-        <code>
-        </code>
-      </pre> 
-
-      <footer>
-        <p>&copy; RateCity Pty Ltd 2012</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <script src="assets/js/tests/vendor/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-
-  </body>
-</html>
+      </body>
+    </html>
 
