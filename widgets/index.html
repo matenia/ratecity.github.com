@@ -23,7 +23,7 @@
       }
     </style>  
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link rel="stylesheet" href="jquery.github_badge.css" >
+    <link rel="stylesheet" href="./jquery.github_badge.css" >
   </head>
 
   <body>
@@ -41,7 +41,21 @@
           You are assumed to be  familiar with HTML and JavaScript programming, along with CSS (Cascading Style Sheets) to control the style.</p>
         </div>
         <div class="span4">
-          <iframe src="http://www.ratecity.com.au/widget_test.html" style="width:300px;height:400px;border:0px;"></iframe>
+          <script type="text/javascript">
+            function ratecityConfig() {
+              // product request configuration
+              var config = {
+                vertical: 'credit-cards',
+                stylesheet: "http://feeds.ratecity.com.au/assets/widget.css",
+                container: 'credit-cards-table',
+                limit: 5
+              };
+              return config;
+            };
+          </script>
+
+          <script src="http://feeds.ratecity.com.au/assets/widget.js" type="text/javascript"></script>
+          <div id="credit-cards-table"></div>
         </div>
       </div>
       <br style="clear:right;" />
@@ -50,32 +64,38 @@
 
           <h3>Embedding the code</h3>
 
-          <p>Firstly, embed the following code on the page, and use the parameter list below to fill out the 'xx' parameters.<p>
+          <p>Firstly, embed the following code on the page, and use the parameter list below to fill out the parameters.<p>
 
           <script src="http://gist.github.com/0dd4544df12369914951.js"></script>
+
+          <p>If you are already using JQuery you should probably use the following version instead, as this does not bundle JQuery with the widget.</p>
+
+          <script src="https://gist.github.com/qnm/5259944.js"></script>
+
 
           <h3>Parameters</h3>
 
           <p>A number of parameters are required to retrieve results.</p>
 
           <dl>
-            <dt>partner</dt>
-            <dd>a string containiner your partner code, supplied by RateCity</dd>
-            <dt>feed</dt>
-            <dd>a string containing your feed identifier, supplied by RateCity</dd>
-            <dt>title</dt>
-            <dd>a string containing the optional feed title</dd>
-            <dt>num</dt>
-            <dd>an integer describing the number of products you wish to display</dd>
-            <dt>fields</dt>
-            <dd>an array of string, containing the columns you wish to render from the feed</dd>
-            <dt>direct_apply</dt>
-            <dd>always false, setting to true enables apply click from the whole table row</dd>
-            <dt>cssTable</dt>
-            <dd>a string reference to the css when rendering the table, see below</dd>
-            <dt>applyText</dt>
-            <dd>a string containing the text displayed on the apply link, set to empty string if you are using images for apply links</dd>
+            <dt>vertical</dt>
+            <dd>A string container the vertical that you wish to display products from</dd>
+            <dd>Choose from: home-loans, credit-cards, term-deposits, personal-loans, car-loans, savings-accounts and transaction-accounts.</dd>
+            <dt>stylesheet</dt>
+            <dd>A string url to the css to use when rendering the table, see below</dd>
+            <dt>container</dt>
+            <dd>The html container id to use to load the widget into</dd>
+            <dt>limit</dt>
+            <dd>The maximum number of products to display</dd>
+            <dt>disclaimer</dt>
+            <dd>A string containing additional disclaimer text, appended to the RateCity default disclaimer</dd>
+            <dt>tracking</dd>
+            <dd>A closure which called when the apply link is clicked. The product object contains the product attributes retrieved from the feed, documented elsewhere</dt>
+            <dt>campaign</dt>
+            <dd>A string which will enable a resulting click to be attribute to this specific campaign variable
           </dl>
+
+          <h2>Customisation</h2>
 
           <h3>Widget Markup</h3>
           <p>The javascript, when executed, will use document.write() to embed markup into the DOM. The markup will have a format similar to the example below:</p>
@@ -86,6 +106,8 @@
           <p>Most of the classes are self-explanatory, but are detailed below:</p>
 
           <dl>
+            <dt>rc-toptable</dt>
+            <dd>The outer div for the widget</dd>
             <dt>ratecity_top</dt>
             <dd>Identifies the outer div for the table title.</dd>
             <dt>ratecity_tablehead</dt>
@@ -115,8 +137,12 @@
 
           <script src="http://gist.github.com/861716cf4448345808a1.js"></script>
 
+          <h2>More?</h2>
+
+          <p>Please get in touch for further details. Email: robin (dot) sharp (at) ratecity (dot) com (dot) au</p>
+
           <footer>
-          <p>&copy; RateCity Pty Ltd 2012</p>
+          <p>&copy; RateCity Pty Ltd 2013</p>
           </footer>
 
         </div> <!-- /container -->
